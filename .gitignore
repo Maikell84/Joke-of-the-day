@@ -1,0 +1,9 @@
+.sass-cache/
+platforms/
+plugins/
+node_modules/
+
+# These files are generated with the "gulp"-task
+www/css/
+www/js/
+www/lib/
