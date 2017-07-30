@@ -23,13 +23,13 @@ var app = {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
   },
   onDeviceReady: function() {
-  	//navigator.app.overrideButton("backbutton", true);
-  	//navigator.app.overrideButton("menubutton", true);
+    // navigator.app.overrideButton("backbutton", true);
+    // navigator.app.overrideButton("menubutton", true);
     document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
     document.addEventListener("pause", this.onPause.bind(this), false);
     document.addEventListener("resume", this.onResume.bind(this), false);
     document.addEventListener("menubutton", this.onMenuKeyDown.bind(this), false);
-    $.material.init()
+    $.material.init();
     app.api.getJoke();
   },
   onBackKeyDown: function(){

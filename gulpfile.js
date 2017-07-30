@@ -24,6 +24,7 @@ gulp.task('sass', function () {
 gulp.task('javascript', function () {
   gulp.src(['./src/javascripts/index.js',
             './src/javascripts/api.js',
+            './src/javascripts/settings.js',
             './src/javascripts/storage.js'
             ])
       .pipe(uglify())

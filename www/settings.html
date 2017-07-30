@@ -51,7 +51,7 @@ under the License.
 	        <div class="navbar-collapse collapse navbar-responsive-collapse">
 	          <ul class="nav navbar-nav">
 	            <li><a href="settings.html">Settings</a></li>
-	            <li><a href="#" data-toggle="modal" data-target="#complete-dialog">About</a></li>
+	            <li><a href="#" data-toggle="modal" data-target="#about-dialog">About</a></li>
 	          </ul>
 	        </div>
 	      </div>
@@ -60,23 +60,31 @@ under the License.
 	    	<h2>Settings</h2>
     		<div class="togglebutton">
           <label>
-            Show NSWF
-            <input type="checkbox">
+            Show NSFW
+            <input type="checkbox" id="checkbox-nsfw">
           </label>
         </div>
         <div class="togglebutton">
           <label>
             Notifications
-            <input type="checkbox">
+            <input type="checkbox" id="checkbox-notifications">
           </label>
+        </div>
+
+        <div class="sample">
+          <div class="form-group">
+            <label for="select-frequency">Select Frequency</label>
+            <select id="select-frequency" class="form-control">
+              <option value="1">Once a day</option>
+              <option value="2">More often</option>
+              <option value="3">Even more often</option>
+            </select>
+          </div>
         </div>
     	</div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/main.min.js"></script>
 
-
-    <div id="complete-dialog" class="modal fade" tabindex="-1">
+    <div id="about-dialog" class="modal fade" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -111,5 +119,9 @@ under the License.
         </div>
       </div>
     </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+
   </body>
 </html>
