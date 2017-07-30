@@ -1,7 +1,7 @@
 /* global app */
 
 app.storage = {
-  irstStart: {
+  firstStart: {
     get: function(){
       return window.localStorage.getItem("firstStart");
     },

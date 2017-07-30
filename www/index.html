@@ -37,28 +37,59 @@ under the License.
     <title>Joke of the day</title>
   </head>
   <body>
-    <div class="app">
-      <div class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)">Joke of the Day</a>
-          </div>
-          <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="settings.html">Settings</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#complete-dialog">About</a></li>
-            </ul>
-          </div>
+    <div class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand to-index-link" href="#">Joke of the Day</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" class="to-settings-link">Settings</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#complete-dialog">About</a></li>
+          </ul>
         </div>
       </div>
+    </div>
+    <div class="index">
+
       <h2 class="joke-header"></h2>
       <p class="joke-text">
       </p>
+    </div>
+
+    <div class="settings">
+      <h2>Settings</h2>
+      <div id="welcome-message">
+        Welcome! Please configure your app below.
+      </div>
+      <div class="togglebutton">
+        <label>
+          Show NSFW
+          <input type="checkbox" id="checkbox-nsfw">
+        </label>
+      </div>
+      <div class="togglebutton">
+        <label>
+          Notifications
+          <input type="checkbox" id="checkbox-notifications">
+        </label>
+      </div>
+
+      <div class="sample">
+        <div class="form-group">
+          <label for="select-frequency">Select Frequency</label>
+          <select id="select-frequency" class="form-control">
+            <option value="1">Once a day</option>
+            <option value="2">More often</option>
+            <option value="3">Even more often</option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>

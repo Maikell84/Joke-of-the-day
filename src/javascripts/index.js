@@ -31,6 +31,15 @@ var app = {
     document.addEventListener("menubutton", this.onMenuKeyDown.bind(this), false);
     $.material.init();
     app.api.getJoke();
+
+    console.log(app.storage.firstStart.get());
+
+    if(app.storage.firstStart.get() == null){
+      window.location.href = "settings.html";
+      $("#welcome-message").show();
+      app.storage.firstStart.set(true);
+
+    }
   },
   onBackKeyDown: function(){
 
