@@ -1,13 +1,13 @@
 {
-    "name": "helloworld",
-    "displayName": "HelloCordova",
+    "name": "JokeOfTheDay",
+    "displayName": "JokeOfTheDay",
     "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "description": "Simple cordova-app, that asks the reddit sub 'Jokes' for a joke.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Apache Cordova Team",
+    "author": "Michael Blum",
     "license": "Apache-2.0",
     "dependencies": {
         "bootstrap": "^3.3.7",

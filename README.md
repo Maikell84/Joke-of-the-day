@@ -16,7 +16,7 @@ Build Javascripts und Stylesheets from `src/` -folder:
 
 Add target-platform:
 
-		cordova platform add android
+    cordova platform add android
 
 Build the application:
 
