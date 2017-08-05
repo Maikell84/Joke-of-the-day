@@ -11,7 +11,7 @@ var app = {
     document.addEventListener("resume", this.onResume.bind(this), false);
     document.addEventListener("menubutton", this.onMenuKeyDown.bind(this), false);
     $.material.init();
-    app.api.getJoke();
+    app.api.getJoke(null);
 
     // console.log(app.storage.firstStart.get());
 
