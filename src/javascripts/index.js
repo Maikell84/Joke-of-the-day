@@ -32,7 +32,7 @@ var app = {
     $.material.init();
     app.api.getJoke();
 
-    console.log(app.storage.firstStart.get());
+    // console.log(app.storage.firstStart.get());
 
     if(app.storage.firstStart.get() == null){
       window.location.href = "settings.html";
