@@ -57,6 +57,15 @@ gulp.task('copylib', function () {
     './node_modules/bootstrap-material-design/dist/css/ripples.min.css.map'
   ])
     .pipe(gulp.dest('./www/lib/css/'));
+
+  gulp.src([
+    './node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot',
+    './node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf',
+    './node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff',
+    './node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2',
+    './node_modules/material-design-icons/iconfont/material-icons.css'
+  ])
+    .pipe(gulp.dest('./www/fonts/'));
 });
 
 gulp.task('run', ['sass', 'javascript', 'copylib', 'test']);

@@ -16,8 +16,8 @@ var app = {
     // console.log(app.storage.firstStart.get());
 
     if(app.storage.firstStart.get() == null){
-      window.location.href = "settings.html";
       $("#welcome-message").show();
+      app.settings.toggleSettings(true);
       app.storage.firstStart.set(true);
 
     }

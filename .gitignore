@@ -6,4 +6,5 @@ node_modules/
 # These files are generated with the "gulp"-task
 www/css/
 www/js/
+www/fonts/
 www/lib/
