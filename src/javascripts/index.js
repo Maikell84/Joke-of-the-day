@@ -1,4 +1,13 @@
+var LOGLEVEL = {
+  ERROR: { value: 0 },
+  WARNING: { value: 1 },
+  INFO: { value: 2 },
+  DEBUG: { value: 3 },
+  VERBOSE: { value: 4 }
+};
+
 var app = {
+  logLevel: LOGLEVEL.WARNING,
   // Application Constructor
   initialize: function() {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -12,8 +21,6 @@ var app = {
     document.addEventListener("menubutton", this.onMenuKeyDown.bind(this), false);
     $.material.init();
     app.api.getJoke(null);
-
-    // console.log(app.storage.firstStart.get());
 
     if(app.storage.firstStart.get() == null){
       $("#welcome-message").show();
