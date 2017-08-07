@@ -14,3 +14,35 @@
   padding: 0 4px;
 }
 
+.settings {
+  padding: 10px;
+
+  span {
+    padding-right: 10px;
+  }
+
+  label {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .col-left,
+  .col-right {
+    height: 40px;
+  }
+
+  .col-right {
+    text-align: right;
+  }
+
+  .form-group {
+    margin: 0;
+
+  }
+}
+
+footer {
+  position: absolute;
+  height: 10px;
+  bottom: 10px;
+}

@@ -25,6 +25,14 @@ app.storage = {
       set: function(value){
         window.localStorage.setItem("notifications", value);
       }
+    },
+    notificationsFrequency: {
+      get: function(){
+        return window.localStorage.getItem("notifications_frequency");
+      },
+      set: function(value){
+        window.localStorage.setItem("notifications_frequency", value);
+      }
     }
   }
 };

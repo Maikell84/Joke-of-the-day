@@ -20,14 +20,29 @@ var app = {
     document.addEventListener("resume", this.onResume.bind(this), false);
     document.addEventListener("menubutton", this.onMenuKeyDown.bind(this), false);
     $.material.init();
-    app.api.getJoke(null);
+    $(".version-display").html("v 0.1.0");
 
     if(app.storage.firstStart.get() == null){
       $("#welcome-message").show();
       app.settings.toggleSettings(true);
       app.storage.firstStart.set(true);
-
     }
+
+    if(app.storage.settings.showNSFW.get() == "true"){
+      app.settings.changeNSFW(true);
+      $("#checkbox-nsfw").prop("checked", "checked");
+    }
+
+    if(app.storage.settings.showNotifications.get() == "true"){
+      app.settings.changeNotifications(true);
+      $("#checkbox-notifications").prop("checked", "checked");
+    }
+
+    if(app.storage.settings.notificationsFrequency.get() != null){
+      $("#select-frequency").val(app.storage.settings.notificationsFrequency.get());
+    }
+
+    app.api.getJoke(null);
   },
   onBackKeyDown: function(){
 

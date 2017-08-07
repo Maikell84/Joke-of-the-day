@@ -52,33 +52,51 @@
 
     <div class="settings">
       <h2>Settings</h2>
-      <div id="welcome-message">
-        Welcome! Please configure your app below.
-      </div>
-      <div class="togglebutton">
-        <label>
-          Show NSFW
-          <input type="checkbox" id="checkbox-nsfw">
-        </label>
-      </div>
-      <div class="togglebutton">
-        <label>
-          Notifications
-          <input type="checkbox" id="checkbox-notifications">
-        </label>
-      </div>
 
-      <div class="sample">
-        <div class="form-group">
+      <div class="row">
+        <div class="col-md-12 col-xs-6" id="welcome-message" >
+          <h3>Welcome!</h3>
+          <p>Please configure your app below.</p>
+        </div>
+
+        <div class="col-md-12 col-xs-6 col-left">
+          NSFW
+        </div>
+        <div class="col-md-12 col-xs-6 col-right">
+
+          <div class="togglebutton">
+            <label>
+              <span class="toggle-label">Don't Show</span>
+              <input type="checkbox" id="checkbox-nsfw">
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-xs-6 col-left">
+          Notifications
+        </div>
+        <div class="col-md-12 col-xs-6 col-right">
+
+          <div class="togglebutton">
+            <label>
+              <span class="toggle-label">Off</span>
+              <input type="checkbox" id="checkbox-notifications">
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-xs-12 col-left">
           <label for="select-frequency">Select Frequency</label>
+
           <select id="select-frequency" class="form-control">
             <option value="1">Once a day</option>
-            <option value="2">More often</option>
-            <option value="3">Even more often</option>
+            <option value="2">More often (2-3 times a day)</option>
+            <option value="3">Even more often (5 times a day)</option>
           </select>
         </div>
       </div>
     </div>
+
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/main.min.js"></script>
@@ -118,5 +136,10 @@
         </div>
       </div>
     </div>
+
+
+    <footer class="footer settings">
+      Joke of the Day - Version <span class="version-display"></span>
+    </footer>
   </body>
 </html>
