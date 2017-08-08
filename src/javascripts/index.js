@@ -23,7 +23,7 @@ var app = {
     $(".version-display").html("v 0.1.0");
 
     if(app.storage.firstStart.get() == null){
-      $("#welcome-message").show();
+      $(".welcome-message").show();
       app.settings.toggleSettings(true);
       app.storage.firstStart.set(true);
     }

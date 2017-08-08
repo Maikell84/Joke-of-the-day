@@ -1,4 +1,4 @@
-#welcome-message,
+.welcome-message,
 .settings {
   display: none;
 }
@@ -8,7 +8,6 @@
   color: #d10023;
   border-radius: 3px;
   border: 1px solid;
-  display: inline-block;
   font-size: 10px;
   line-height: 14px;
   padding: 0 4px;
@@ -22,8 +21,8 @@
   }
 
   label {
-    font-size: 14px;
     color: #000;
+    font-size: 14px;
   }
 
   .col-left,
@@ -39,10 +38,27 @@
     margin: 0;
 
   }
+
+  .welcome-message {
+    margin: 2em 0;
+  }
+}
+
+.main-navigation {
+  bottom: 30px;
+  height: 30px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  i {
+    font-size: 50px;
+    padding: 0, 5em;
+  }
 }
 
 footer {
-  position: absolute;
-  height: 10px;
   bottom: 10px;
+  height: 10px;
+  position: absolute;
 }
