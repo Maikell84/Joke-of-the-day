@@ -30,6 +30,7 @@ gulp.task('javascript', function () {
     './src/javascripts/index.js',
     './src/javascripts/api.js',
     './src/javascripts/debug.js',
+    './src/javascripts/events.js',
     './src/javascripts/settings.js',
     './src/javascripts/storage.js',
     './src/javascripts/utils.js',

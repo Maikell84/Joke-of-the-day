@@ -10,7 +10,12 @@ var app = {
   highestJokeID: null,
   currentJokeID: null,
   logLevel: LOGLEVEL.WARNING,
+  jokes: [],
+  jokeIds: [],
   jokeSource: 1,
+  nsfw: 0,
+  notifications: 0,
+  notificationsFrequency: 1,
   // Application Constructor
   initialize: function() {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -34,15 +39,18 @@ var app = {
     if(app.storage.settings.showNSFW.get() == "true"){
       app.settings.changeNSFW(true);
       $("#checkbox-nsfw").prop("checked", "checked");
+      app.nsfw = 1;
     }
 
     if(app.storage.settings.showNotifications.get() == "true"){
       app.settings.changeNotifications(true);
       $("#checkbox-notifications").prop("checked", "checked");
+      app.notifications = 1;
     }
 
     if(app.storage.settings.notificationsFrequency.get() != null){
       $("#select-frequency").val(app.storage.settings.notificationsFrequency.get());
+      app.notificationsFrequency = 1;
     }
 
     if(app.storage.settings.jokeSource.get() != null){
@@ -53,6 +61,7 @@ var app = {
     app.storage.webSQL.init();
     app.api.getJoke(null);
     app.storage.webSQL.getMaxJokeID();
+    app.getLastJokes();
   },
   onBackKeyDown: function(){
 
@@ -68,6 +77,14 @@ var app = {
   },
   handleJokeID: function(result){
     app.highestJokeID = result.rows.item(0)['max(id)'];
+  },
+  getLastJokes: function(){
+    app.storage.webSQL.readJoke(null, function(jokes){
+      app.jokes = jokes;
+      for(var i = 0; i < jokes.length; i++){
+        app.jokeIds.push(jokes[i]['jokeId']);
+      }
+    });
   }
 };
 

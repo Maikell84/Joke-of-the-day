@@ -1,29 +1,5 @@
 /* global app */
 
-$(document).on("click", "#checkbox-nsfw", function(){
-  app.settings.changeNSFW($(this).prop("checked"));
-});
-
-$(document).on("click", "#checkbox-notifications", function(){
-  app.settings.changeNotifications($(this).prop("checked"));
-});
-
-$(document).on("change", "#select-frequency", function(){
-  app.settings.changeNotificationFrequency($(this).val());
-});
-
-$(document).on("change", "#select-source", function(){
-  app.settings.changeSource($(this).val());
-});
-
-$(document).on("click", ".to-settings-link", function(){
-  app.settings.toggleSettings(true);
-});
-
-$(document).on("click", ".to-index-link", function(){
-  app.settings.toggleSettings(false);
-});
-
 app.settings = {
   changeNSFW: function(value){
     app.storage.settings.showNSFW.set(value);
@@ -37,6 +13,7 @@ app.settings = {
     app.storage.settings.notificationsFrequency.set(value);
   },
   changeSource: function(value){
+    app.jokeSource = value;
     app.storage.settings.jokeSource.set(value);
   },
   toggleSettings: function(show){

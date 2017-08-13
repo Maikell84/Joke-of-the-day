@@ -7,11 +7,11 @@ app.api = {
       app.api.callIcanhazdadjoke();
       break;
     default:
-      app.api.callReddit();
+      app.api.callReddit(null, null);
       break;
     }
   },
-  callReddit: function(last_post){
+  callReddit: function(lastPost){
     // Ask Reddit-API for a list of jokes
     // Unfortunately reddit doesn't let us filter out NSFW posts. So we have to do it ourselves by
     // getting a list of jokes and take the first Joke that is SFW
@@ -19,8 +19,8 @@ app.api = {
     var showNSFW = app.storage.settings.showNSFW.get();
     var after = "";
 
-    if(last_post != null){
-      after = "&after=" + last_post;
+    if(lastPost != null){
+      after = "&after=" + lastPost;
     }
 
     if(!showNSFW){
@@ -43,8 +43,13 @@ app.api = {
           nsfw = response.data.children[i].data.over_18;
           name = response.data.children[i].data.name;
 
+          // If we are currently displaying this joke
+          if($(".joke-name").html() == name){
+            continue;
+          }
+
           // If Display of NSFW Content is ok, or the content is non-nsfw, we're done
-          if(showNSFW || !nsfw){
+          if(app.nsfw || !nsfw){
             break;
           }
 
@@ -59,6 +64,7 @@ app.api = {
         // var id = response.data.children["0"].data.id;
         $(".joke-header").html(app.utils.escapeHtml(title));
         $(".joke-text").html(app.utils.escapeHtml(text));
+        $(".joke-name").html(app.utils.escapeHtml(name));
 
         if(nsfw){
           $(".nsfw-icon").show();
@@ -80,6 +86,7 @@ app.api = {
       },
       success: function(response){
         var text = response.joke;
+        $(".joke-header").html("ICanHazDadJoke:");
         $(".joke-text").html(text);
         app.storage.webSQL.insertJoke(2, null, null, text, 0);
       }
