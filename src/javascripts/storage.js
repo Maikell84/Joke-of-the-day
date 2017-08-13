@@ -33,6 +33,14 @@ app.storage = {
       set: function(value){
         window.localStorage.setItem("notifications_frequency", value);
       }
+    },
+    jokeSource: {
+      get: function(){
+        return window.localStorage.getItem("joke_source");
+      },
+      set: function(value){
+        window.localStorage.setItem("joke_source", value);
+      }
     }
   }
 };

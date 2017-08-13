@@ -42,6 +42,11 @@ var app = {
       $("#select-frequency").val(app.storage.settings.notificationsFrequency.get());
     }
 
+    if(app.storage.settings.jokeSource.get() != null){
+      $("#select-source").val(app.storage.settings.jokeSource.get());
+    }
+
+    app.storage.webSQL.init();
     app.api.getJoke(null);
   },
   onBackKeyDown: function(){

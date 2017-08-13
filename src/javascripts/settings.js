@@ -12,6 +12,10 @@ $(document).on("change", "#select-frequency", function(){
   app.settings.changeNotificationFrequency($(this).val());
 });
 
+$(document).on("change", "#select-source", function(){
+  app.settings.changeSource($(this).val());
+});
+
 $(document).on("click", ".to-settings-link", function(){
   app.settings.toggleSettings(true);
 });
@@ -31,6 +35,9 @@ app.settings = {
   },
   changeNotificationFrequency: function(value){
     app.storage.settings.notificationsFrequency.set(value);
+  },
+  changeSource: function(value){
+    app.storage.settings.jokeSource.set(value);
   },
   toggleSettings: function(show){
     if(show){

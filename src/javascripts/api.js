@@ -41,6 +41,7 @@ app.api = {
             // User doesn't want NSFW, but we could not find any SFW-Joke, So we have to call the api again
             // We give the "name"-value of the last element, so reddit starts
             app.api.getJoke(name);
+            break;
           }
         }
 
@@ -53,6 +54,8 @@ app.api = {
         else{
           $(".nsfw-icon").hide();
         }
+        // Save Joke in Database
+        app.storage.webSQL.insertJoke(1, name, title, text, nsfw);
       }
     });
   }

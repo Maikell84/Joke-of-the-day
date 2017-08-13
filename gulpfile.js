@@ -31,7 +31,8 @@ gulp.task('javascript', function () {
     './src/javascripts/api.js',
     './src/javascripts/debug.js',
     './src/javascripts/settings.js',
-    './src/javascripts/storage.js'
+    './src/javascripts/storage.js',
+    './src/javascripts/websql.js'
   ])
     .pipe(uglify())
     .pipe(concat('main.min.js'))
