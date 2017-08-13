@@ -12,7 +12,7 @@ app.storage = {
   settings: {
     showNSFW: {
       get: function(){
-        return window.localStorage.getItem("nsfw");
+        return parseInt(window.localStorage.getItem("nsfw"));
       },
       set: function(value){
         window.localStorage.setItem("nsfw", value);
@@ -20,7 +20,7 @@ app.storage = {
     },
     showNotifications: {
       get: function(){
-        return window.localStorage.getItem("notifications");
+        return parseInt(window.localStorage.getItem("notifications"));
       },
       set: function(value){
         window.localStorage.setItem("notifications", value);
@@ -28,7 +28,7 @@ app.storage = {
     },
     notificationsFrequency: {
       get: function(){
-        return window.localStorage.getItem("notifications_frequency");
+        return parseInt(window.localStorage.getItem("notifications_frequency"));
       },
       set: function(value){
         window.localStorage.setItem("notifications_frequency", value);
@@ -36,7 +36,7 @@ app.storage = {
     },
     jokeSource: {
       get: function(){
-        return window.localStorage.getItem("joke_source");
+        return parseInt(window.localStorage.getItem("joke_source"));
       },
       set: function(value){
         window.localStorage.setItem("joke_source", value);

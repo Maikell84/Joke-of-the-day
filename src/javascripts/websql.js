@@ -1,10 +1,13 @@
-/* global app */
+/* global app, LOGLEVEL */
 
 app.storage.webSQL = {
   db: null,
   init: function(){
     app.storage.webSQL.loadDatabase();
     app.storage.webSQL.createDatabase();
+  },
+  databaseError: function(error){
+    app.debug.toLog(LOGLEVEL.ERROR, "Database Error", error);
   },
   loadDatabase: function(){
     app.storage.webSQL.db = openDatabase('jokes', '1.0', 'Jokes Database', 2 * 1024 * 1024);
@@ -25,10 +28,11 @@ app.storage.webSQL = {
       tx.executeSql('INSERT INTO Jokes (id, api, jokeId, title, content, nsfw) VALUES (NULL, ?, ?, ?, ?, ?)', [api, jokeid, title, content, nsfw]);
     });
   },
-  readJokes: function(id, callback){
+  readJoke: function(id, callback){
     var jokes = [];
+    var query = id != undefined ? 'SELECT * FROM Jokes WHERE id = ?' : 'SELECT * FROM Jokes';
     app.storage.webSQL.db.transaction(function (tx) {
-      tx.executeSql('SELECT * FROM Jokes WHERE id = ?', [id], function (tx, results) {
+      tx.executeSql(query, [id], function (tx, results) {
         var len = results.rows.length, i;
         for (i = 0; i < len; i++){
           var row = results.rows.item(i);
@@ -42,14 +46,14 @@ app.storage.webSQL = {
           };
         }
         callback(jokes);
-      }, null);
+      }, app.storage.webSQL.databaseError);
     });
   },
-  readJoke: function(){
+  getMaxJokeID: function(){
     app.storage.webSQL.db.transaction(function (tx) {
-      tx.executeSql('SELECT * FROM Jokes', [], function (tx, results) {
-
-      }, null);
+      tx.executeSql('SELECT max(id) FROM Jokes', [], function (tx, result) {
+        app.handleJokeID(result);
+      }, app.storage.webSQL.databaseError);
     });
   }
 };

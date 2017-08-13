@@ -1,7 +1,17 @@
 /* global app*/
 
 app.api = {
-  getJoke: function(last_post){
+  getJoke: function(){
+    switch(app.jokeSource){
+    case 2:
+      app.api.callIcanhazdadjoke();
+      break;
+    default:
+      app.api.callReddit();
+      break;
+    }
+  },
+  callReddit: function(last_post){
     // Ask Reddit-API for a list of jokes
     // Unfortunately reddit doesn't let us filter out NSFW posts. So we have to do it ourselves by
     // getting a list of jokes and take the first Joke that is SFW
@@ -32,6 +42,7 @@ app.api = {
           text = response.data.children[i].data.selftext;
           nsfw = response.data.children[i].data.over_18;
           name = response.data.children[i].data.name;
+
           // If Display of NSFW Content is ok, or the content is non-nsfw, we're done
           if(showNSFW || !nsfw){
             break;
@@ -40,14 +51,15 @@ app.api = {
           if(i == (limit-1)){
             // User doesn't want NSFW, but we could not find any SFW-Joke, So we have to call the api again
             // We give the "name"-value of the last element, so reddit starts
-            app.api.getJoke(name);
+            app.api.callReddit(name);
             break;
           }
         }
 
         // var id = response.data.children["0"].data.id;
-        $(".joke-header").html(title);
-        $(".joke-text").html(text);
+        $(".joke-header").html(app.utils.escapeHtml(title));
+        $(".joke-text").html(app.utils.escapeHtml(text));
+
         if(nsfw){
           $(".nsfw-icon").show();
         }
@@ -56,6 +68,20 @@ app.api = {
         }
         // Save Joke in Database
         app.storage.webSQL.insertJoke(1, name, title, text, nsfw);
+      }
+    });
+  },
+  callIcanhazdadjoke: function(){
+    $.ajax({
+      method: 'GET',
+      url: "https://icanhazdadjoke.com",
+      headers: {
+        Accept: "application/json"
+      },
+      success: function(response){
+        var text = response.joke;
+        $(".joke-text").html(text);
+        app.storage.webSQL.insertJoke(2, null, null, text, 0);
       }
     });
   }

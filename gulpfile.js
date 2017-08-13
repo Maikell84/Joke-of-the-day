@@ -32,6 +32,7 @@ gulp.task('javascript', function () {
     './src/javascripts/debug.js',
     './src/javascripts/settings.js',
     './src/javascripts/storage.js',
+    './src/javascripts/utils.js',
     './src/javascripts/websql.js'
   ])
     .pipe(uglify())

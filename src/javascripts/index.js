@@ -7,7 +7,10 @@ var LOGLEVEL = {
 };
 
 var app = {
+  highestJokeID: null,
+  currentJokeID: null,
   logLevel: LOGLEVEL.WARNING,
+  jokeSource: 1,
   // Application Constructor
   initialize: function() {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -44,10 +47,12 @@ var app = {
 
     if(app.storage.settings.jokeSource.get() != null){
       $("#select-source").val(app.storage.settings.jokeSource.get());
+      app.jokeSource = app.storage.settings.jokeSource.get();
     }
 
     app.storage.webSQL.init();
     app.api.getJoke(null);
+    app.storage.webSQL.getMaxJokeID();
   },
   onBackKeyDown: function(){
 
@@ -60,6 +65,9 @@ var app = {
   },
   onMenuKeyDown: function(){
 
+  },
+  handleJokeID: function(result){
+    app.highestJokeID = result.rows.item(0)['max(id)'];
   }
 };
 
