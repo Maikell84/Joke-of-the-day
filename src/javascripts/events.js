@@ -25,11 +25,17 @@ $(document).on("click", ".to-index-link", function(){
 });
 
 $(document).on("click", ".previous-joke", function(){
-
+  if(app.currentJokeID > 0){
+    app.currentJokeID--;
+    app.storage.webSQL.readJoke(app.currentJokeID, app.displayJokeFromDatabase);
+  }
 });
 
 $(document).on("click", ".next-joke", function(){
-
+  if(app.currentJokeID < app.highestJokeID ){
+    app.currentJokeID++;
+    app.storage.webSQL.readJoke(app.currentJokeID, app.displayJokeFromDatabase);
+  }
 });
 
 $(document).on("click", ".new-joke", function(){

@@ -25,7 +25,7 @@ app.storage.webSQL = {
   },
   insertJoke: function(api, jokeid, title, content, nsfw){
     app.storage.webSQL.db.transaction(function (tx) {
-      tx.executeSql('INSERT INTO Jokes (id, api, jokeid, title, content, nsfw) VALUES (NULL, ?, ?, ?, ?, ?)', [api, jokeid, title, content, nsfw]);
+      tx.executeSql('INSERT INTO Jokes (id, api, jokeid, title, content, nsfw) VALUES (NULL, ?, ?, ?, ?, ?)', [api, jokeid, title, content, nsfw], app.storage.webSQL.getMaxJokeID());
     });
   },
   readJoke: function(id, callback){
@@ -40,7 +40,7 @@ app.storage.webSQL = {
           jokes[i] = {
             id: row['id'],
             api: row['api'],
-            jokeId: row['jokeId'],
+            jokeid: row['jokeid'],
             title: row['title'],
             content: row['content'],
             nsfw: row['nsfw']

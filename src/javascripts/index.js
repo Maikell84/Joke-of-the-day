@@ -77,14 +77,29 @@ var app = {
   },
   handleJokeID: function(result){
     app.highestJokeID = result.rows.item(0)['max(id)'];
+    app.currentJokeID = app.highestJokeID;
   },
   getLastJokes: function(){
     app.storage.webSQL.readJoke(null, function(jokes){
       app.jokes = jokes;
       for(var i = 0; i < jokes.length; i++){
-        app.jokeIds.push(jokes[i]['jokeId']);
+        app.jokeIds.push(jokes[i]['jokeid']);
       }
     });
+  },
+  displayJoke: function(title, text, name, nsfw){
+    $(".joke-header").html(app.utils.escapeHtml(title));
+    $(".joke-text").html(app.utils.escapeHtml(text));
+    $(".joke-name").html(app.utils.escapeHtml(name));
+    if(nsfw){
+      $(".nsfw-icon").show();
+    }
+    else{
+      $(".nsfw-icon").hide();
+    }
+  },
+  displayJokeFromDatabase: function(jokes){
+    app.displayJoke(jokes[0]['title'], jokes[0]['content'], jokes[0]['jokeid'], jokes[0]['nsfw'] == 'true');
   }
 };
 

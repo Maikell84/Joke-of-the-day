@@ -18,6 +18,7 @@ app.api = {
     var limit = 1;
     var showNSFW = app.storage.settings.showNSFW.get();
     var after = "";
+    var display = true;
 
     if(lastPost != null){
       after = "&after=" + lastPost;
@@ -43,9 +44,18 @@ app.api = {
           nsfw = response.data.children[i].data.over_18;
           name = response.data.children[i].data.name;
 
-          // If we are currently displaying this joke
-          if($(".joke-name").html() == name){
-            continue;
+          // If we already displayed this joke
+          if(app.jokeIds.includes(name)){
+            if(i == (limit-1)){
+              // We have displayed all the jokes in the current selection. So we have to ask the api for the next X jokes
+              // We give the "name"-value of the last element, so reddit starts
+              app.api.callReddit(name);
+              display = false;
+              break;
+            }
+            else{
+              continue;
+            }
           }
 
           // If Display of NSFW Content is ok, or the content is non-nsfw, we're done
@@ -59,21 +69,15 @@ app.api = {
             app.api.callReddit(name);
             break;
           }
+          display = true;
         }
 
-        // var id = response.data.children["0"].data.id;
-        $(".joke-header").html(app.utils.escapeHtml(title));
-        $(".joke-text").html(app.utils.escapeHtml(text));
-        $(".joke-name").html(app.utils.escapeHtml(name));
-
-        if(nsfw){
-          $(".nsfw-icon").show();
+        if(display){
+          app.displayJoke(title, text, name, nsfw);
+          // Save Joke in Database
+          app.storage.webSQL.insertJoke(1, name, title, text, nsfw);
+          app.jokeIds.push(name);
         }
-        else{
-          $(".nsfw-icon").hide();
-        }
-        // Save Joke in Database
-        app.storage.webSQL.insertJoke(1, name, title, text, nsfw);
       }
     });
   },
@@ -86,8 +90,7 @@ app.api = {
       },
       success: function(response){
         var text = response.joke;
-        $(".joke-header").html("ICanHazDadJoke:");
-        $(".joke-text").html(text);
+        app.displayJoke("ICanHazDadJoke:", text, null, false);
         app.storage.webSQL.insertJoke(2, null, null, text, 0);
       }
     });
