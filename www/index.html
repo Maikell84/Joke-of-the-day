@@ -39,10 +39,16 @@
       </div>
     </div>
     <div class="index">
-      <span class="nsfw-icon">NSFW</span>
-      <h2 class="joke-header"></h2>
-      <p class="joke-text"></p>
-      <p class="joke-name hidden"></p>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="nsfw-icon">NSFW</span>
+            <h2 class="joke-header"></h2>
+            <p class="joke-text"></p>
+            <p class="joke-name hidden"></p>
+          </div>
+        </div>
+      </div>
       <div class="main-navigation">
         <i class="material-icons previous-joke">&#xE045;</i>
         <i class="material-icons new-joke">&#xE863;</i>
@@ -58,7 +64,9 @@
           <h3>Welcome!</h3>
           <p>Please configure your app below.</p>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-md-12 col-xs-6 col-left">
           NSFW
         </div>
@@ -71,7 +79,9 @@
             </label>
           </div>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-md-12 col-xs-6 col-left">
           Notifications
         </div>
@@ -84,26 +94,36 @@
             </label>
           </div>
         </div>
+      </div>
 
-        <div class="col-md-12 col-xs-12 col-left">
-          <label for="select-frequency">Select Frequency</label>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="select-frequency">Select Frequency</label>
 
-          <select id="select-frequency" class="form-control">
-            <option value="1">Once a day</option>
-            <option value="2">More often (2-3 times a day)</option>
-            <option value="3">Even more often (5 times a day)</option>
-          </select>
+            <select id="select-frequency" class="form-control">
+              <option value="1">Once a day</option>
+              <option value="2">More often (2-3 times a day)</option>
+              <option value="3">Even more often (5 times a day)</option>
+            </select>
+          </div>
         </div>
+      </div>
 
-        <div class="col-md-12 col-xs-12 col-left">
-          <label for="select-source">Select Joke-Source</label>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="select-source">Select Joke-Source</label>
 
-          <select id="select-source" class="form-control">
-            <option value="1">Reddit</option>
-            <option value="2">Icanhazdadjoke</option>
-          </select>
+            <select id="select-source" class="form-control">
+              <option value="1">Reddit</option>
+              <option value="2">Icanhazdadjoke</option>
+            </select>
+          </div>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-md-12 col-xs-12 welcome-message" >
           <div class="control-group">
             <a href="#" class="btn btn-raised btn-primary to-index-link">
