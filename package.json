@@ -9,7 +9,7 @@
     "author": "Michael Blum",
     "license": "Apache-2.0",
     "dependencies": {
-        "bootstrap": "^3.3.7",
+        "bootstrap": "^3.4.1",
         "bootstrap-material-design": "^0.5.10",
         "cordova-android": "9.0.0",
         "cordova-browser": "6.0.0",
